@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   adalConfig: {
-    tenant: 'newquipad.onmicrosoft.com',
-    clientId: '0bfe388b-d50d-42ae-8150-53ef18e34347',
+    tenant: 'shibas.onmicrosoft.com',
+    clientId: 'd663212d-da0c-49e6-82d0-1140afb9da66',
     redirectUri: window.location.origin + '/login',
     cacheLocation: 'localStorage',
     navigateToLoginRequestUrl: false

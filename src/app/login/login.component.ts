@@ -14,7 +14,6 @@ export class LoginComponent implements AfterViewChecked {
     checkCount = 0;
     constructor(private adal: AdalService, private authService: AuthService,
         private router: Router) {
-       console.log(router.url);
     }
 
     ngAfterViewChecked() {
