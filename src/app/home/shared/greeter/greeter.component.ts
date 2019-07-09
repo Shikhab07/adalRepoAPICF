@@ -9,31 +9,12 @@ import {Component, Input, OnInit} from '@angular/core';
 export class GreeterComponent implements OnInit {
 
   @Input() greetings: string;
-  isServiceWorking: boolean;
-  showServiceStatus: boolean;
-
-  constructor(private exampleService: ExampleService) {
+  constructor() {
   }
 
   ngOnInit() {
     if (!this.greetings) {
       this.greetings = 'home.welcome';
     }
-    this.callService();
   }
-
-  toggleServiceStatus() {
-    this.showServiceStatus = !this.showServiceStatus;
-  }
-
-  private callService() {
-    this.exampleService.serviceExampleFunction().subscribe(
-      result => {
-        this.isServiceWorking = result;
-      },
-      err => {
-        console.log(err);
-      });
-  }
-
 }
