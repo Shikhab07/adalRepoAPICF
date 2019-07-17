@@ -27,9 +27,10 @@ steps:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '- task: PublishPipelineArtifact@1
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    
+- task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
-    artifact: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'.zip'
-    replaceExistingArchive: true
-
+    artifact: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
