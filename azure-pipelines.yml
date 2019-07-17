@@ -22,4 +22,11 @@ steps:
     echo $(Build.ArtifactStagingDirectory)
     echo $(Build.BuildId)
   displayName: 'npm install and build'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
