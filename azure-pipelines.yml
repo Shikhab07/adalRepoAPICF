@@ -23,15 +23,19 @@ steps:
     echo $(Build.BuildId)
     echo $(System.DefaultWorkingDirectory)
   displayName: 'npm install and build'
+
 - task: ArchiveFiles@2
+  displayName: 'Archive Files'
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/WebApp/dist/WebApp'
+    includeRootFolder: false
     archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
     artifact: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    artifactName: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    targetPath: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
