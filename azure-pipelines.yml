@@ -21,16 +21,5 @@ steps:
     ng build --prod
     echo $(Build.ArtifactStagingDirectory)
     echo $(Build.BuildId)
+    echo $(System.DefaultWorkingDirectory)
   displayName: 'npm install and build'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: '$(Build.BuildId).zip'
