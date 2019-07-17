@@ -20,14 +20,5 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+echo $(Build.ArtifactStagingDirectory)
+echo $(Build.BuildId)
