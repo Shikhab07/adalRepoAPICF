@@ -16,15 +16,21 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g @angular/cli
+    npm install -g @angular/cli@7.3.5
     npm install
+    npm audit fix
     ng build --prod
     sh ls
     echo $(Build.ArtifactStagingDirectory)
     echo $(Build.BuildId)
     echo $(System.DefaultWorkingDirectory)
   displayName: 'npm install and build'
-
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(System.DefaultWorkingDirectory)/dist'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: index.js
+    TargetFolder: '$(System.DefaultWorkingDirectory)/dist'
 - task: ArchiveFiles@2
   displayName: 'Archive Files'
   inputs:
