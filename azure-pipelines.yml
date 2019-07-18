@@ -30,10 +30,10 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     artifactName: '$(Build.BuildId).zip'
-    targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    targetPath: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
     
