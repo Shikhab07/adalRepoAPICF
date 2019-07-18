@@ -27,11 +27,11 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Archive Files'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
-    archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
-- task: PublishPipelineArtifact@0
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+- task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    artifactName: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
-    targetPath: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    artifactName: '$(Build.BuildId).zip'
+    targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
